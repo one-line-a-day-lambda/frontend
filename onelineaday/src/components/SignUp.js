@@ -5,6 +5,7 @@ export class SignUp extends React.Component {
 
 // Where I plan to put login and most of the authorization stuff
 
+
     render(){
         return(
             
