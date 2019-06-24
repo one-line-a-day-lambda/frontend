@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import SignUp from "./components/SignUp"
+import OneLineADay from "./components/OneLineADay"
 
 function App() {
   return (
