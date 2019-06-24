@@ -1,9 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
 function App() {
   return (
+    // Use App just to map out/declare routes.  Shouldn't need to
+    // create any other components for what's done here
     <div className="App">
       Hello from App!
       <Route exact path = "/" component={SignUp}/>
