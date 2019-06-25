@@ -7,9 +7,9 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 // Done, no need to come back here
 
 ReactDOM.render(
-  <Route>
+  <Router>
     <App />
-  </Route>,
+  </Router>,
   document.getElementById("root")
 );
 

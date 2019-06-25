@@ -10,12 +10,12 @@ export default class SignUp extends React.Component {
         password:""
     }
 
-  changeHandler = event => {
-    preventDefault();
-  this.setState({
-      [event.target.name]: event.target.value
-  })
-  }
+  // changeHandler = event => {
+  //   preventDefault();
+  // this.setState({
+  //     [event.target.name]: event.target.value
+  // })
+  // }
 
 
 
@@ -23,7 +23,7 @@ export default class SignUp extends React.Component {
     return (
       <div>
         Hello from Signup
-        <form onSumbit={}>
+        {/* <form onSumbit={}>
         <input
           type="text"
           placeholder="Enter Username"
@@ -39,7 +39,7 @@ export default class SignUp extends React.Component {
           onChange={this.changeHandler}
         />
         <button type="submit">Login</button>
-        </form>
+        </form> */}
       </div>
     );
   }

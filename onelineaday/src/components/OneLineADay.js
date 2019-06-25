@@ -1,4 +1,5 @@
 import React from "react"
+import axios from "axios"
 
 
 export default class OneLineADay extends React.Component {
@@ -15,9 +16,9 @@ export default class OneLineADay extends React.Component {
     // and use an imported callback in the componentDidMount
    componentDidMount(){ 
     axios
-    .get("URL")
+    .get("https://onelineadaybe.herokuapp.com/")
     .then(res=>{
-        console.log{res}
+        console.log(res)
       //  this.setState({post=})
     })
     .catch(rej=>{
@@ -30,12 +31,12 @@ export default class OneLineADay extends React.Component {
         // Later, spin map off into its own (fucntion, not class) component, use OneLineADay for rendering only
         return (
             <div>
-                {this.state.diaryEntry.map(post=>{
+                {/* {this.state.diaryEntry.map(post=>{
                 <div>
                     <h4>{post.id}</h4>
                     <h4>{post.post}</h4>
                 </div>
-            })}
+            })} */}
             
                 Hello from OneLineADay
             </div>
