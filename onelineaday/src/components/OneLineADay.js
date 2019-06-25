@@ -14,10 +14,16 @@ export default class OneLineADay extends React.Component {
       .get("https://onelineadaybe.herokuapp.com/")
       .then(
         res => (
+          console.log("This is res"),
           console.log(res),
+          console.log("This is res.data"),
           console.log(res.data),
+
           this.setState({ post: res.data }),
+          
+          console.log("This is this.state.post"),
           console.log(this.state.post),
+          console.log("This is this.state.post.message"),
           console.log(this.state.post.message)
         )
       )
