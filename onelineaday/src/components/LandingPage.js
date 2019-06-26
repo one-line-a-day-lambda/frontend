@@ -27,7 +27,8 @@ class LandingPage extends React.Component {
         </NavLink>
         <h1 className="header">Welcome To One Line A Day</h1>
         <h2> Please Sign Up To Continue</h2>
-        <img src="src/images/LandingPagePic.jpg" alt="Notebook" />
+        <img src="/src/images/landingPagePic.jpg" alt="Notebook" />
+        
         {/* <p>
           <Link className="buttons" to="login">
             <button>Login</button>

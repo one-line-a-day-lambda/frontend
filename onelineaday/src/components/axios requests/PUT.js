@@ -1,3 +1,6 @@
+
+
+
 // putDiary = (id, updatedDiary) => {
 //     axios
 //     .put(`URL/${id}`, updatedDiary)
@@ -16,3 +19,19 @@
 //         })
 //     })
 // }
+
+// state = {
+//     post="",
+//     user_id=localStorage.getItem("id")
+//   };
+
+// id = localStorage.getItem(id)
+
+// <form
+//           onSubmit={event => {
+//             event.preventDefault();
+//             this.putDiary(this.state.credentials);
+//           }}
+//         >
+
+//             this.setState = [...post, user_id]

@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Link, NavLink } from "react-router-dom";
 //import { axiosWithAuth, axiosWithAuthorization } from "../../axiosAuthorization";
 import axios from "axios";
+import {Menu} from "./Menu"
 
 // Where I plan to put login and most of the authorization stuff
 
@@ -43,26 +44,7 @@ export default class SignUp extends React.Component {
   render() {
     return (
       <div className="divWrapper">
-         <NavLink exact to="/" className="navlink" activeClassName="selectedLink">
-          Home
-        </NavLink>
-        <NavLink
-          exact to="/signup"
-          className="navlink"
-          activeClassName="selectedLink"
-        >
-          Sign Up
-        </NavLink>
-        <NavLink exact to="/login" className="navlink" activeClassName="selectedLink">
-          Login
-        </NavLink>
-        <NavLink
-          exact to="/onelineaday"
-          className="navlink"
-          activeClassName="selectedLink"
-        >
-          Your Diary Entries
-        </NavLink>
+         {Menu()}
         <form
           onSubmit={event => {
             event.preventDefault();
