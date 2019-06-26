@@ -39,7 +39,6 @@ export default class OneLineADay extends React.Component {
       }
     });
   };
-  
 
   postRequest = newPost => {
     console.log("newPost is below");
@@ -53,7 +52,6 @@ export default class OneLineADay extends React.Component {
           newPostError: ""
         });
         window.location.reload();
-
         console.log(this.state.newPostSuccess);
       })
       .catch(rej => {
@@ -66,18 +64,15 @@ export default class OneLineADay extends React.Component {
       });
   };
 
-  putRequest = (postId, newPost) => {
+  putRequest = (id, newPost) => {
     axiosWithAuth()
-      .put(`/api/posts/${postId}`, newPost)
+      .put(`/api/posts/${id}`, newPost)
       .then(res => {
         console.log(res);
-        this.setState({
-          newPostSuccess: "PUT request successful! Console log above ^",
-          newPostError: ""
-        });
-        window.location.reload();
+        this.setState(prevState => ({
+          defaultPost: prevState.defaultPost.filter(line => line.id != id)
+        }));
       })
-      
       .catch(rej => {
         console.log(rej);
         this.setState({
@@ -87,22 +82,36 @@ export default class OneLineADay extends React.Component {
       });
   };
 
+  // deleteRequest = id => {
+  //   axiosWithAuth()
+  //     .delete(`/api/posts/${id}`)
+  //     .then(res => {
+  //       //window.location.reload();
+  //       console.log(res);
+  //       this.setState({
+  //         //defaultPost: res.data.action.posts,
+  //         //newPostSuccess: "DELETE request successful! Console log above ^",
+  //        // newPostError: ""
+  //       });
+  //     })
+  //     .catch(rej => {
+  //       console.log(rej);
+  //       this.setState({
+  //         newPostError: "DELETE request failed, console log above ^",
+  //         newPostSuccess: ""
+  //       });
+  //     });
+  // };
+
   deleteRequest = id => {
     axiosWithAuth()
       .delete(`/api/posts/${id}`)
       .then(res => {
-        window.location.reload();
         console.log(res);
-        this.setState({
-          defaultPost: res.data.action.posts,
-          newPostSuccess: "DELETE request successful! Console log above ^",
-          newPostError: ""
-        });
+        this.setState(prevState => ({
+          defaultPost: prevState.defaultPost.filter(line => line.id != id)
+        }));
       })
-      .then(res => {
-        this.setState({ defaultPost: res.data.action.posts });
-      })
-
       .catch(rej => {
         console.log(rej);
         this.setState({
@@ -116,10 +125,11 @@ export default class OneLineADay extends React.Component {
     return (
       <div>
         {Menu()}
-        {this.state.defaultPost.map((post, id) => (
-          <h4 key={id}>
-            {post.post}
-            {/* {console.log("this is post object")}
+        <p>
+          {this.state.defaultPost.map((post, id) => (
+            <h4 key={id}>
+              {post.post}
+              {/* {console.log("this is post object")}
           {console.log(post)}
           {console.log("this is pthe array position")}
           {console.log(id)}
@@ -127,39 +137,42 @@ export default class OneLineADay extends React.Component {
           {console.log(post.id)}
           {console.log("this is the user id")}
           {console.log(post.user_id)} */}
-            <input
-              type="text"
-              placeholder="Replace your thoughts for today?"
-              onChange={this.changeHandler}
-              value={this.state.newPost.post}
-              name="post"
-            />
-            <p>
-              <button
-                onClick={() => {
-                  this.putRequest(post.id, this.state.newPost);
-                }}
-              >
-                Replace this post
-              </button>
-              <button
-                onClick={() => {
-                  this.deleteRequest(post.id);
-                }}
-              >
-                Delete this post
-              </button>
-            </p>
-          </h4>
-        ))}
+              <input
+                type="text"
+                placeholder="Replace your thoughts for today?"
+                onChange={this.changeHandler}
+                value={this.state.newPost.post}
+                name="post"
+              />
+              <p>
+                <button
+                  onClick={() => {
+                    this.putRequest(post.id, this.state.newPost);
+                  }}
+                >
+                  Replace this post
+                </button>
+                <button
+                  onClick={() => {
+                    this.deleteRequest(post.id);
+                  }}
+                >
+                  Delete this post
+                </button>
+              </p>
+            </h4>
+          ))}
+        </p>
         {console.log(this.state.defaultPost)}
-        <input
-          type="text"
-          placeholder="What are your thoughts for today?"
-          onChange={this.changeHandler}
-          value={this.state.newPost.post}
-          name="post"
-        />
+        <p>
+          <input
+            type="text"
+            placeholder="What are your thoughts for today?"
+            onChange={this.changeHandler}
+            value={this.state.newPost.post}
+            name="post"
+          />
+        </p>
         <p>
           <button
             className="navlink"
