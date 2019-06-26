@@ -9,30 +9,37 @@ export default class OneLineADay extends React.Component {
     post: [],
     newPostSuccess: "",
     newPostError: "",
-    newPost: "",
+    newPost: {
+      post: "", 
+      user_id: localStorage.getItem("id")
+    },
     newPut: "",
     id: localStorage.getItem("id")
   };
 
   componentDidMount() {
-    this.getRequest()
+    this.getRequest();
   }
 
- getRequest = () => {
+  getRequest = () => {
     const id = localStorage.getItem("id");
     axiosWithAuth()
       .get(`/api/users/${id}`)
-      .then(res => {this.setState({ post: res.data.action.posts });})
+      .then(res => {
+        this.setState({ post: res.data.action.posts });
+      })
       .catch(rej => console.log(rej));
-    }
-    
+  };
 
   changeHandler = event => {
     event.preventDefault();
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ 
+     // ...this.state.post,
+      [event.target.name]: event.target.value });
   };
 
   postRequest = newPost => {
+    console.log(newPost)
     axiosWithAuth()
       .post("/api/posts", newPost)
       .then(res => {
@@ -58,12 +65,13 @@ export default class OneLineADay extends React.Component {
       .then(res => {
         console.log(res);
         this.setState({
-    
           newPostSuccess: "PUT request successful! Console log above ^",
           newPostError: ""
         });
       })
-      .then(res => {this.setState({ post: res.data.action.posts });})
+      .then(res => {
+        this.setState({ post: res.data.action.posts });
+      })
       .catch(rej => {
         console.log(rej);
         this.setState({
@@ -73,11 +81,10 @@ export default class OneLineADay extends React.Component {
       });
   };
 
-  deleteRequest = (id) => {
+  deleteRequest = id => {
     axiosWithAuth()
       .delete(`/api/posts/${id}`)
       .then(res => {
-    
         console.log(res);
         this.setState({
           post: res.data.action.posts,
@@ -85,7 +92,9 @@ export default class OneLineADay extends React.Component {
           newPostError: ""
         });
       })
-      .then(res => {this.setState({ post: res.data.action.posts });})
+      .then(res => {
+        this.setState({ post: res.data.action.posts });
+      })
       .catch(rej => {
         console.log(rej);
         this.setState({
@@ -96,14 +105,14 @@ export default class OneLineADay extends React.Component {
   };
 
   render() {
-    // Again, just get it working
-    // Later, spin map off into its own (fucntion, not class) component, use OneLineADay for rendering only
+
     return (
       <div>
         {Menu()}
         {this.state.post.map((post, id) => (
-          <h4 key={id}>{post.post}
-          {/* {console.log("this is post object")}
+          <h4 key={id}>
+            {post.post}
+            {/* {console.log("this is post object")}
           {console.log(post)}
           {console.log("this is pthe array position")}
           {console.log(id)}
@@ -111,28 +120,27 @@ export default class OneLineADay extends React.Component {
           {console.log(post.id)}
           {console.log("this is the user id")}
           {console.log(post.user_id)} */}
-          <input
-          type="text"
-          placeholder="Replace your thoughts for today?"
-          onChange={this.changeHandler}
-          value={this.state.newPut}
-          name="newPut"
-        />
-          <button
-          onClick={() => {
-            this.putRequest(post.id, this.state.newPut);
-          }}
-        >
-          Replace this post
-        </button>
-        <button
-          onClick={() => {
-            this.deleteRequest(post.id);
-          }}
-        >
-          Delete this post
-        </button>
-          
+            <input
+              type="text"
+              placeholder="Replace your thoughts for today?"
+              onChange={this.changeHandler}
+              value={this.state.newPut}
+              name="newPut"
+            />
+            <p><button
+              onClick={() => {
+                this.putRequest(post.id, this.state.newPut);
+              }}
+            >
+              Replace this post
+            </button>
+            <button
+              onClick={() => {
+                this.deleteRequest(post.id);
+              }}
+            >
+              Delete this post
+            </button></p>
           </h4>
         ))}
         {console.log(this.state.post)}
@@ -140,16 +148,16 @@ export default class OneLineADay extends React.Component {
           type="text"
           placeholder="What are your thoughts for today?"
           onChange={this.changeHandler}
-          value={this.state.newPost}
+          value={this.state.post}
           name="newPost"
         />
-        <button
+        <p><button className="navlink"
           onClick={() => {
             this.postRequest(this.state.newPost);
           }}
         >
           Submit your thoughts for the day
-        </button>
+        </button></p>
       </div>
     );
   }

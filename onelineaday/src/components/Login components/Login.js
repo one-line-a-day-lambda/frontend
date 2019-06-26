@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Link, NavLink } from "react-router-dom";
 //import { axiosWithAuth, axiosWithAuthorization } from "../../axiosAuthorization";
 import axios from "axios";
-import {Menu} from "./Menu"
+import { Menu } from "./Menu";
 
 // Where I plan to put login and most of the authorization stuff
 
@@ -51,20 +51,24 @@ export default class Login extends React.Component {
             this.props.history.push("/onelineaday");
           }}
         >
-         <p><input
-            type="text"
-            placeholder="Enter Registered Username"
-            name="username"
-            value={this.state.credentials.username}
-            onChange={this.changeHandler}
-          /></p> 
-          <p><input
-            type="text"
-            placeholder="Enter Registered Password"
-            name="password"
-            value={this.state.credentials.password}
-            onChange={this.changeHandler}
-          /></p> 
+          <p>
+            <input
+              type="text"
+              placeholder="Enter Registered Username"
+              name="username"
+              value={this.state.credentials.username}
+              onChange={this.changeHandler}
+            />
+          </p>
+          <p>
+            <input
+              type="text"
+              placeholder="Enter Registered Password"
+              name="password"
+              value={this.state.credentials.password}
+              onChange={this.changeHandler}
+            />
+          </p>
           <button type="submit">Login</button>
         </form>
       </div>
