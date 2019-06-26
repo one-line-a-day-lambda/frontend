@@ -58,10 +58,20 @@ button {
   display: inline;
   margin: 5px 10px;
   font-size: 1.2rem;
-  
+  border: 2px solid #62c46f;
+  font-family: Roboto;
+  font-size: 1.3rem;
+
+  background: white;
+  color: #62c46f;
+  text-decoration: none;
 }
 
-.signup-button {
+form {
+  margin-top: 150px;
+}
+
+/* .signup-button {
   background: #62c46f;
   color: white;
-}
+} */

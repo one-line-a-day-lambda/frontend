@@ -58,20 +58,20 @@ export default class Login extends React.Component {
             this.props.history.push("/onelineaday");
           }}
         >
-          <input
+         <p><input
             type="text"
             placeholder="Enter Username"
             name="username"
             value={this.state.credentials.username}
             onChange={this.changeHandler}
-          />
-          <input
+          /></p> 
+          <p><input
             type="text"
             placeholder="Enter Password"
             name="password"
             value={this.state.credentials.password}
             onChange={this.changeHandler}
-          />
+          /></p> 
           <button type="submit">Login</button>
         </form>
       </div>
