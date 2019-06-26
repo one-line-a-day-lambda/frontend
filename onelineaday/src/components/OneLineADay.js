@@ -35,10 +35,9 @@ export default class OneLineADay extends React.Component {
     // Later, spin map off into its own (fucntion, not class) component, use OneLineADay for rendering only
     return (
       <div>
-        {/* {this.state.diaryEntry.map(post=>{
+        {/* {this.state.post.map(post=>{
                 <div>
-                    <h4>{post.id}</h4>
-                    <h4>{post.post}</h4>
+                    <h4>{post.message}</h4>
                 </div>
             })} */}
         Hello from OneLineADay

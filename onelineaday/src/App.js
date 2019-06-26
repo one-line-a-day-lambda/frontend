@@ -12,14 +12,9 @@ function App() {
     <div className="App">
       Hello from App!
       <Router>
-        <Link to="/">Home</Link>
-        <Link to="/signup">Sign Up</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/onlineaday">One Line A Day</Link>
-        <Route exact path="/" component={App} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route path="/login" component={Login} />
-        <Route path="/onelineaday" component={OneLineADay} />
+        <Route exact path = "/signup" component={SignUp} />
+        <Route exact path = "/login" component={Login} />
+        <Route exact path="/" component={OneLineADay} />
       </Router>
     </div>
   );

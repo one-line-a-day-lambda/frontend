@@ -1,80 +1,87 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { axiosWithAuth, axiosWithAuthorization } from "./axiosAuthorization";
+import axios from "axios";
 
 // Where I plan to put login and most of the authorization stuff
 
 export default class SignUp extends React.Component {
-  
-    state={
-      credentials={
-        username:"",
-        password:""
-      }
-      }
+  state = {
+    credentials: {
+      username: "",
+      password: ""
+    }
+  };
 
   changeHandler = event => {
-    preventDefault();
-    this.setState({ credentials: {
-    ...this.state.credentials,
-    [event.target.name]: event.target.value 
-}
-})
-}
+    event.preventDefault();
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [event.target.name]: event.target.value
+      }
+    });
+  };
 
-loginCheck = event => {
-  event.preventDefault();
+  // loginCheck = e => {
+  //   e.preventDefault();
+  //   this.props.login(this.state.credentials).then(res => {
+  //     if (res) {
+  //       this.props.history.push("/onelineaday");
+  //     }
+  //   });
+  // };
 
-}
+  // login = creds => {
+  //   axiosWithAuthorization()
+  // .post("https://onelineadaybe.herokuapp.com/api/auth/register", creds)
+  // .then(res => {
+  //   console.log(res),
+  //   localStorage.setItem("token", res.data)
+  // })
+  // .catch(rej => console.log(rej.message))
+  // }
 
-login = credit => {
-  localStorage.setItem("token")
-}
-
-// login = e => {
-//   e.preventDefault();
-//   this.props.login(this.state.credentials).then(res => {
-//     if (res) {
-//       this.props.history.push("/protected");
-//     }
-//   });
-// };
-
-
-// export const login = creds => dispatch => {
-//   dispatch({ type: LOGIN_START });
-//   return axiosWithAuth()
-//     .post("/", creds)
-//     .then(res => {
-//       console.log(res);
-//       localStorage.setItem("token", res.data);
-//       dispatch({ type: LOGIN_SUCCESS });
-//       return true;
-//     })
-//     .catch(err => console.log(err.response));
-// };
-
-
+  signup = credits => {
+    console.log("hello")
+    
+    axios
+      .post(`https://onelineadaybe.herokuapp.com/api/auth/register`, credits)
+      .then(res => {
+        
+        console.log(res.data);
+        console.log("Hello from registration")
+        localStorage.setItem("token", "password")
+        //dispatch({ type: SIGNUP_SUCCESS, payload: res.data.payload });
+      })
+      .catch(err => {
+        console.log(err);
+       // dispatch({ type: SIGNUP_FAIL, payload: "" });
+      })
+  };
 
   render() {
     return (
       <div>
         Hello from Signup
-        <form onSumbit={}>
+        <form onSubmit={(event)=>{event.preventDefault();
+          this.signup(this.state.credentials);
+          }}>
         <input
           type="text"
           placeholder="Enter Username"
           name="username"
-          value={this.state.username}
+          value={this.state.credentials.username}
           onChange={this.changeHandler}
         />
         <input
           type="text"
           placeholder="Enter Password"
           name="password"
-          value={this.state.password}
+          value={this.state.credentials.password}
           onChange={this.changeHandler}
         />
-        <button type="submit">Login</button>
+        <button type="submit">Sign Up</button>
         </form>
       </div>
     );
