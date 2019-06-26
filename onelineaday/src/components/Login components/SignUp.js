@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { axiosWithAuth, axiosWithAuthorization } from "./axiosAuthorization";
+//import { axiosWithAuth, axiosWithAuthorization } from "../../axiosAuthorization";
 import axios from "axios";
 
 // Where I plan to put login and most of the authorization stuff
