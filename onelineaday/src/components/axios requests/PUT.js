@@ -1,37 +1,18 @@
-
-
-
-// putDiary = (id, updatedDiary) => {
-//     axios
-//     .put(`URL/${id}`, updatedDiary)
-//     .then(res=>{
-//         console.log(res),
-//       this.setState({
-//           putSuccess = "PUT request successful! Console log above ^",
-//           putError = ""
-//         })
-//     })
-//     .catch(rej=>{
-//         console.log(rej),
+// putRequest = (id, newPut) => {
+//     axiosWithAuth()
+//       .put(`/api/posts/${id}`, newPut)
+//       .then(res => {
+//         console.log(res);
 //         this.setState({
-//             putError = "PUT request failed, console log above ^",
-//             putSuccess = ""
-//         })
-//     })
-// }
-
-// state = {
-//     post="",
-//     user_id=localStorage.getItem("id")
+//           newPostSuccess: "PUT request successful! Console log above ^",
+//           newPostError: ""
+//         });
+//       })
+//       .catch(rej => {
+//         console.log(rej);
+//         this.setState({
+//           newPostError: "PUT request failed, console log above ^",
+//           newPostSuccess: ""
+//         });
+//       });
 //   };
-
-// id = localStorage.getItem(id)
-
-// <form
-//           onSubmit={event => {
-//             event.preventDefault();
-//             this.putDiary(this.state.credentials);
-//           }}
-//         >
-
-//             this.setState = [...post, user_id]

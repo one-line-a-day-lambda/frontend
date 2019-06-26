@@ -1,18 +1,18 @@
-// deleteDiary = id => {
-//     axios
-//     .delete(`URL/${id}`)
-//     .then(res=>{
-//         console.log(res),
-//       this.setState({
-//           putSuccess = "DELETE request successful! Console log above ^",
-//           putError = ""
-//         })
-//     })
-//     .catch(rej=>{
-//         console.log(rej),
+// deleteRequest = (id) => {
+//     axiosWithAuth()
+//       .delete(`/api/posts/${id}`)
+//       .then(res => {
+//         console.log(res);
 //         this.setState({
-//             putError = "DELETE request failed, console log above ^",
-//             putSuccess = ""
-//         })
-//     })
-// }
+//           newPostSuccess: "DELETE request successful! Console log above ^",
+//           newPostError: ""
+//         });
+//       })
+//       .catch(rej => {
+//         console.log(rej);
+//         this.setState({
+//           newPostError: "DELETE request failed, console log above ^",
+//           newPostSuccess: ""
+//         });
+//       });
+//   };

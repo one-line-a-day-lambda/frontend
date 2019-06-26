@@ -1,18 +1,18 @@
-// postDiary = diaryEntry => {
-//     axios
-//     .post("URL", diaryEntry)
-//     .then(res=>{
-//         console.log(res),
+// postRequest = newPost => {
+//     axiosWithAuth()
+//       .post("/api/posts", newPost)
+//       .then(res => {
+//         console.log(res);
 //         this.setState({
-//           postSuccess = "POST request successful! Console log above ^",
-//           postError = ""
-//         })
-//     })
-//     .catch(rej=>{
-//         console.log(rej),
+//           newPostSuccess: "POST request successful! Console log above ^",
+//           newPostError: ""
+//         });
+//       })
+//       .catch(rej => {
+//         console.log(rej);
 //         this.setState({
-//             postError = "POST request failed, console log above ^",
-//             postSuccess = ""
-//         })
-//     })
-// }
+//           newPostError: "POST request failed, console log above ^",
+//           newPostSuccess: ""
+//         });
+//       });
+//   };
