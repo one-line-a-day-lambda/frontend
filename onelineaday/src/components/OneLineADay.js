@@ -46,7 +46,6 @@ export default class OneLineADay extends React.Component {
       .catch(rej => {
         console.log(rej);
         this.setState({
-          
           newPostError: "POST request failed, console log above ^",
           newPostSuccess: ""
         });
@@ -59,11 +58,12 @@ export default class OneLineADay extends React.Component {
       .then(res => {
         console.log(res);
         this.setState({
-          post: res.data.action.posts,
+    
           newPostSuccess: "PUT request successful! Console log above ^",
           newPostError: ""
         });
       })
+      .then(res => {this.setState({ post: res.data.action.posts });})
       .catch(rej => {
         console.log(rej);
         this.setState({
@@ -85,6 +85,7 @@ export default class OneLineADay extends React.Component {
           newPostError: ""
         });
       })
+      .then(res => {this.setState({ post: res.data.action.posts });})
       .catch(rej => {
         console.log(rej);
         this.setState({
