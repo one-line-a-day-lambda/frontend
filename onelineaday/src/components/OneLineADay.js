@@ -57,10 +57,10 @@ export default class OneLineADay extends React.Component {
     // Again, just get it working
     // Later, spin map off into its own (fucntion, not class) component, use OneLineADay for rendering only
     return (
-      console.log("This is this.state"),
-      console.log(this.state),
-      console.log("This is this.state.post"),
-      console.log(this.state.post[3].post),
+      // console.log("This is this.state"),
+      // console.log(this.state),
+      // console.log("This is this.state.post"),
+      // console.log(this.state.post[3].post),
       (
         // console.log("This is this.state.post.action"),
         // console.log(this.state.post.action),
@@ -71,28 +71,37 @@ export default class OneLineADay extends React.Component {
         // console.log("This is this.state.post.action.posts[3].post"),
         // console.log(this.state.post.action.posts[3].post),
         <div>
-          <NavLink to="/" className="navlink" activeClassName="selectedLink">
-            Home
-          </NavLink>
-          <NavLink
-            to="/signup"
-            className="navlink"
-            activeClassName="selectedLink"
-          >
-            Sign Up
-          </NavLink>
-          <NavLink
-            to="/login"
-            className="navlink"
-            activeClassName="selectedLink"
-          >
-            Login
-          </NavLink>
+          <NavLink exact to="/" className="navlink" activeClassName="selectedLink">
+          Home
+        </NavLink>
+        <NavLink
+          exact to="/signup"
+          className="navlink"
+          activeClassName="selectedLink"
+        >
+          Sign Up
+        </NavLink>
+        <NavLink exact to="/login" className="navlink" activeClassName="selectedLink">
+          Login
+        </NavLink>
+        <NavLink
+          exact to="/onelineaday"
+          className="navlink"
+          activeClassName="selectedLink"
+        >
+          Your Diary Entries
+        </NavLink>
+          {console.log("this.state from below return")}
+            {console.log(this.state)}
+            {console.log("this.state.post from below return")}
+            {console.log(this.state.post)}
+      
+          {/* <p>
+          {this.state.post.map(post => post.post)}
+            
 
-          <p>{this.state.post.map(post => 
-            console.log(post)
-            )
-            }</p>
+            this.state.post.map(post=>console.log(post))
+             */}
         </div>
       )
     );

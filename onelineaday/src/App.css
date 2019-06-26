@@ -71,7 +71,16 @@ form {
   margin-top: 150px;
 }
 
-/* .signup-button {
+.selectedLink {
   background: #62c46f;
   color: white;
+}
+
+h2 {
+  color: #62c46f;
+}
+
+/* .divWrapper {
+  border: 2px solid #62c46f;
+  margin: 0 auto;
 } */

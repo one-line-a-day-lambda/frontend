@@ -42,14 +42,25 @@ export default class SignUp extends React.Component {
 
   render() {
     return (
-      <div>
-         <NavLink to="/" className="navlink" activeClassName="selectedLink">
+      <div className="divWrapper">
+         <NavLink exact to="/" className="navlink" activeClassName="selectedLink">
           Home
         </NavLink>
-        <NavLink to="/login" className="navlink" activeClassName="selectedLink">
+        <NavLink
+          exact to="/signup"
+          className="navlink"
+          activeClassName="selectedLink"
+        >
+          Sign Up
+        </NavLink>
+        <NavLink exact to="/login" className="navlink" activeClassName="selectedLink">
           Login
         </NavLink>
-        <NavLink to="/onelineaday" className="navlink" activeClassName="selectedLink">
+        <NavLink
+          exact to="/onelineaday"
+          className="navlink"
+          activeClassName="selectedLink"
+        >
           Your Diary Entries
         </NavLink>
         <form
@@ -61,14 +72,14 @@ export default class SignUp extends React.Component {
         >
           <p><input
             type="text"
-            placeholder="Enter Username"
+            placeholder="Enter Desired Username"
             name="username"
             value={this.state.credentials.username}
             onChange={this.changeHandler}
           /></p>
           <p><input
             type="text"
-            placeholder="Enter Password"
+            placeholder="Enter Desired Password"
             name="password"
             value={this.state.credentials.password}
             onChange={this.changeHandler}
