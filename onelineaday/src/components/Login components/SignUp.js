@@ -1,5 +1,5 @@
 import React from "react";
-//import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link, NavLink } from "react-router-dom";
 //import { axiosWithAuth, axiosWithAuthorization } from "../../axiosAuthorization";
 import axios from "axios";
 
@@ -23,25 +23,6 @@ export default class SignUp extends React.Component {
     });
   };
 
-  // loginCheck = e => {
-  //   e.preventDefault();
-  //   this.props.login(this.state.credentials).then(res => {
-  //     if (res) {
-  //       this.props.history.push("/onelineaday");
-  //     }
-  //   });
-  // };
-
-  // login = creds => {
-  //   axiosWithAuthorization()
-  // .post("https://onelineadaybe.herokuapp.com/api/auth/register", creds)
-  // .then(res => {
-  //   console.log(res),
-  //   localStorage.setItem("token", res.data)
-  // })
-  // .catch(rej => console.log(rej.message))
-  // }
-
   signup = credits => {
     console.log("hello");
 
@@ -62,7 +43,15 @@ export default class SignUp extends React.Component {
   render() {
     return (
       <div>
-        Hello from Signup
+         <NavLink to="/" className="navlink" activeClassName="selectedLink">
+          Home
+        </NavLink>
+        <NavLink to="/login" className="navlink" activeClassName="selectedLink">
+          Login
+        </NavLink>
+        <NavLink to="/onelineaday" className="navlink" activeClassName="selectedLink">
+          Your Diary Entries
+        </NavLink>
         <form
           onSubmit={event => {
             event.preventDefault();

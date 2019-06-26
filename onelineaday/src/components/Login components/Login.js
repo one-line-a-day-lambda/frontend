@@ -1,5 +1,5 @@
 import React from "react";
-//import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link, NavLink } from "react-router-dom";
 //import { axiosWithAuth, axiosWithAuthorization } from "../../axiosAuthorization";
 import axios from "axios";
 
@@ -42,7 +42,15 @@ export default class Login extends React.Component {
   render() {
     return (
       <div>
-        Hello from Signup
+         <NavLink to="/" className="navlink" activeClassName="selectedLink">
+          Home
+        </NavLink>
+        <NavLink to="/signup" className="navlink" activeClassName="selectedLink">
+          Sign Up
+        </NavLink>
+        <NavLink to="/onelineaday" className="navlink" activeClassName="selectedLink">
+          Your Diary Entries
+        </NavLink>
         <form
           onSubmit={event => {
             event.preventDefault();

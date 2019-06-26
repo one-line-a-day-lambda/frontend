@@ -53,3 +53,15 @@ button {
 .buttons {
   text-decoration: none;
 }
+
+.navlink{
+  display: inline;
+  margin: 5px 10px;
+  font-size: 1.2rem;
+  
+}
+
+.signup-button {
+  background: #62c46f;
+  color: white;
+}

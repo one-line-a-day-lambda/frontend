@@ -1,5 +1,6 @@
 import React from "react";
 //import axios from "axios";
+import { BrowserRouter as Link, NavLink} from "react-router-dom";
 import { axiosWithAuth } from "../axiosWithAuth";
 
 export default class OneLineADay extends React.Component {
@@ -17,10 +18,6 @@ export default class OneLineADay extends React.Component {
     axiosWithAuth()
       .get(`/api/users/${id}`)
       .then(res => {
-        // console.log({ res });
-        // console.log("This is res.data");
-        // console.log(res.data);
-
         this.setState({ post: res.data });
         console.log("This is this.state.post");
         console.log(this.state.post);
@@ -59,7 +56,15 @@ export default class OneLineADay extends React.Component {
       // console.log(this.state.post.action.posts[3].post),
       (
         <div>
-          Hello from OneLineADay
+           <NavLink to="/" className="navlink" activeClassName="selectedLink">
+          Home
+        </NavLink>
+        <NavLink to="/signup" className="navlink" activeClassName="selectedLink">
+          Sign Up
+        </NavLink>
+        <NavLink to="/login" className="navlink" activeClassName="selectedLink">
+          Login
+        </NavLink>
           {/* <p>{this.state.post.action.posts.map(post=>post.post)}</p> */}
         </div>
       )
