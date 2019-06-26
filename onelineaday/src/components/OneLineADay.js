@@ -13,7 +13,6 @@ export default class OneLineADay extends React.Component {
       post: "",
       user_id: localStorage.getItem("id")
     },
-    newPut: "",
     id: localStorage.getItem("id")
   };
 
@@ -34,26 +33,28 @@ export default class OneLineADay extends React.Component {
   changeHandler = event => {
     event.preventDefault();
     this.setState({
-      newPost:{
-        ...this.state.newPost, 
-        [event.target.name]: event.target.value}
-
+      newPost: {
+        ...this.state.newPost,
+        [event.target.name]: event.target.value
+      }
     });
   };
+  
 
   postRequest = newPost => {
-    console.log("newPost is below")
+    console.log("newPost is below");
     console.log(newPost);
     axiosWithAuth()
       .post("/api/posts", newPost)
       .then(res => {
         console.log(res);
         this.setState({
-         defaultPost: res.data.action.posts,
           newPostSuccess: "POST request successful! Console log above ^",
           newPostError: ""
         });
-        console.log(this.state.newPostSuccess)
+        window.location.reload();
+
+        console.log(this.state.newPostSuccess);
       })
       .catch(rej => {
         console.log(rej);
@@ -61,23 +62,22 @@ export default class OneLineADay extends React.Component {
           newPostError: "POST request failed, console log above ^",
           newPostSuccess: ""
         });
-        console.log(this.state.newPostError)
+        console.log(this.state.newPostError);
       });
   };
 
-  putRequest = (id, newPut) => {
+  putRequest = (postId, newPost) => {
     axiosWithAuth()
-      .put(`/api/posts/${id}`, newPut)
+      .put(`/api/posts/${postId}`, newPost)
       .then(res => {
         console.log(res);
         this.setState({
           newPostSuccess: "PUT request successful! Console log above ^",
           newPostError: ""
         });
+        window.location.reload();
       })
-      .then(res => {
-        this.setState({ defaultPost: res.data.action.posts });
-      })
+      
       .catch(rej => {
         console.log(rej);
         this.setState({
@@ -91,6 +91,7 @@ export default class OneLineADay extends React.Component {
     axiosWithAuth()
       .delete(`/api/posts/${id}`)
       .then(res => {
+        window.location.reload();
         console.log(res);
         this.setState({
           defaultPost: res.data.action.posts,
@@ -101,6 +102,7 @@ export default class OneLineADay extends React.Component {
       .then(res => {
         this.setState({ defaultPost: res.data.action.posts });
       })
+
       .catch(rej => {
         console.log(rej);
         this.setState({
@@ -129,13 +131,13 @@ export default class OneLineADay extends React.Component {
               type="text"
               placeholder="Replace your thoughts for today?"
               onChange={this.changeHandler}
-              value={this.state.newPut}
-              name="newPut"
+              value={this.state.newPost.post}
+              name="post"
             />
             <p>
               <button
                 onClick={() => {
-                  this.putRequest(post.id, this.state.newPut);
+                  this.putRequest(post.id, this.state.newPost);
                 }}
               >
                 Replace this post
