@@ -3,8 +3,8 @@
 # the publish directory is the folder where the production build lives.
 # build command for netlify is npm run build or yarn build.
 [build]
-  base = "demo/"
-  publish = "demo/build/"
+  base = "frontend/"
+  publish = "frontend/onelineaday/"
 
   # A basic redirect rule
   # For use with react router. Keeps user from leaving index.html when
