@@ -111,7 +111,7 @@ export default class OneLineADay extends React.Component {
         {/* See Menu component for details */}
         {Menu()}
         <h1 className="h1Header">Your One Line A Day Journal</h1>
-        <p className="entryBox">
+        <div className="entryBox">
           <h2>Dear Journal, Today . . .</h2>
           <input
           className="diaryInput"
@@ -130,10 +130,10 @@ export default class OneLineADay extends React.Component {
           >
             +
           </button>
-        </p>
-        <p>
+        </div>
+        <div>
           {this.state.defaultPost.map((post, id) => (
-            <h4 key={id}>
+            <div key={id}>
               <h4 className="userPosts">{post.post}</h4>
 
               <input
@@ -160,9 +160,9 @@ export default class OneLineADay extends React.Component {
                   Delete this post
                 </button>
               </p>
-            </h4>
+            </div>
           ))}
-        </p>
+        </div>
         {console.log(this.state.defaultPost)}
         
       </div>
