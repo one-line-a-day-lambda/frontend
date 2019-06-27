@@ -69,9 +69,6 @@ export default class OneLineADay extends React.Component {
       .put(`/api/posts/${id}`, newPost)
       .then(res => {
         console.log(res);
-        this.setState(prevState => ({
-          defaultPost: prevState.defaultPost.filter(line => line.id != id)
-        }));
         window.location.reload();
       })
 
