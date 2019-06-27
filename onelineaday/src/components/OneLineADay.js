@@ -124,19 +124,13 @@ export default class OneLineADay extends React.Component {
   render() {
     return (
       <div>
+        {/* See Menu component for details */}
         {Menu()}
         <p>
           {this.state.defaultPost.map((post, id) => (
             <h4 key={id}>
               {post.post}
-              {/* {console.log("this is post object")}
-          {console.log(post)}
-          {console.log("this is pthe array position")}
-          {console.log(id)}
-          {console.log("this is the post.id/specific post ID")}
-          {console.log(post.id)}
-          {console.log("this is the user id")}
-          {console.log(post.user_id)} */}
+              
               <input
                 type="text"
                 placeholder="Replace your thoughts for today?"
