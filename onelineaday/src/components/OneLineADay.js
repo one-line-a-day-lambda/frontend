@@ -103,6 +103,8 @@ export default class OneLineADay extends React.Component {
       });
   };
 
+
+
   render() {
     return (
       <div>
@@ -111,7 +113,7 @@ export default class OneLineADay extends React.Component {
         <p>
           {this.state.defaultPost.map((post, id) => (
             <h4 key={id}>
-              {post.post}
+              <h4 className="userPosts">{post.post}</h4>
 
               <input
                 type="text"

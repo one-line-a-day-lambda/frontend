@@ -80,6 +80,15 @@ h2 {
   color: #62c46f;
 }
 
+.userPosts {
+  border: 2px solid #62c46f;
+  margin: 5px auto;
+  padding: 15px 10px;
+  width: 10%;
+  color: white;
+  background: #62c46f;
+}
+
 /* .divWrapper {
   border: 2px solid #62c46f;
   margin: 0 auto;
