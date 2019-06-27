@@ -72,7 +72,9 @@ export default class OneLineADay extends React.Component {
         this.setState(prevState => ({
           defaultPost: prevState.defaultPost.filter(line => line.id != id)
         }));
+        window.location.reload();
       })
+
       .catch(rej => {
         console.log(rej);
         this.setState({
@@ -81,27 +83,6 @@ export default class OneLineADay extends React.Component {
         });
       });
   };
-
-  // deleteRequest = id => {
-  //   axiosWithAuth()
-  //     .delete(`/api/posts/${id}`)
-  //     .then(res => {
-  //       //window.location.reload();
-  //       console.log(res);
-  //       this.setState({
-  //         //defaultPost: res.data.action.posts,
-  //         //newPostSuccess: "DELETE request successful! Console log above ^",
-  //        // newPostError: ""
-  //       });
-  //     })
-  //     .catch(rej => {
-  //       console.log(rej);
-  //       this.setState({
-  //         newPostError: "DELETE request failed, console log above ^",
-  //         newPostSuccess: ""
-  //       });
-  //     });
-  // };
 
   deleteRequest = id => {
     axiosWithAuth()
@@ -130,7 +111,7 @@ export default class OneLineADay extends React.Component {
           {this.state.defaultPost.map((post, id) => (
             <h4 key={id}>
               {post.post}
-              
+
               <input
                 type="text"
                 placeholder="Replace your thoughts for today?"
