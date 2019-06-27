@@ -6,12 +6,12 @@ import picture from "../images/landingPagePic.jpg"
 class LandingPage extends React.Component {
   render() {
     return (
-      <>
+      <div className="everything">
         {Menu()}
         <h1 className="header">Welcome To One Line A Day</h1>
-        <h2> Please Sign Up To Continue</h2>
+        <h2 className="landingPageh2"> Please Sign Up To Continue</h2>
         <img src={picture} alt="Notebook" />
-      </>
+      </div>
     );
   }
 }

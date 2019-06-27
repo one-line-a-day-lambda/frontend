@@ -107,9 +107,30 @@ export default class OneLineADay extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="everything">
         {/* See Menu component for details */}
         {Menu()}
+        <h1 className="h1Header">Your One Line A Day Journal</h1>
+        <p className="entryBox">
+          <h2>Dear Journal, Today . . .</h2>
+          <input
+          className="diaryInput"
+            type="text"
+            placeholder="What are your thoughts for today?"
+            onChange={this.changeHandler}
+            value={this.state.newPost.post}
+            name="post"
+          />
+        
+          <button
+            className="navlink submitDiary"
+            onClick={() => {
+              this.postRequest(this.state.newPost);
+            }}
+          >
+            +
+          </button>
+        </p>
         <p>
           {this.state.defaultPost.map((post, id) => (
             <h4 key={id}>
@@ -124,6 +145,7 @@ export default class OneLineADay extends React.Component {
               />
               <p>
                 <button
+                
                   onClick={() => {
                     this.putRequest(post.id, this.state.newPost);
                   }}
@@ -142,25 +164,7 @@ export default class OneLineADay extends React.Component {
           ))}
         </p>
         {console.log(this.state.defaultPost)}
-        <p>
-          <input
-            type="text"
-            placeholder="What are your thoughts for today?"
-            onChange={this.changeHandler}
-            value={this.state.newPost.post}
-            name="post"
-          />
-        </p>
-        <p>
-          <button
-            className="navlink"
-            onClick={() => {
-              this.postRequest(this.state.newPost);
-            }}
-          >
-            Submit your thoughts for the day
-          </button>
-        </p>
+        
       </div>
     );
   }
