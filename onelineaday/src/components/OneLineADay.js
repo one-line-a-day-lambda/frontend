@@ -103,15 +103,38 @@ export default class OneLineADay extends React.Component {
       });
   };
 
+
+
   render() {
     return (
-      <div>
+      <div className="everything">
         {/* See Menu component for details */}
         {Menu()}
-        <p>
+        <h1 className="h1Header">Your One Line A Day Journal</h1>
+        <div className="entryBox">
+          <h2>Dear Journal, Today . . .</h2>
+          <input
+            className="diaryInput"
+            type="text"
+            placeholder="What are your thoughts for today?"
+            onChange={this.changeHandler}
+            value={this.state.newPost.post}
+            name="post"
+          />
+        
+          <button
+            className="navlink submitDiary"
+            onClick={() => {
+              this.postRequest(this.state.newPost);
+            }}
+          >
+            +
+          </button>
+        </div>
+        <div>
           {this.state.defaultPost.map((post, id) => (
-            <h4 key={id}>
-              {post.post}
+            <div key={id}>
+              <h4 className="userPosts">{post.post}</h4>
 
               <input
                 type="text"
@@ -122,6 +145,7 @@ export default class OneLineADay extends React.Component {
               />
               <p>
                 <button
+                
                   onClick={() => {
                     this.putRequest(post.id, this.state.newPost);
                   }}
@@ -136,29 +160,11 @@ export default class OneLineADay extends React.Component {
                   Delete this post
                 </button>
               </p>
-            </h4>
+            </div>
           ))}
-        </p>
+        </div>
         {console.log(this.state.defaultPost)}
-        <p>
-          <input
-            type="text"
-            placeholder="What are your thoughts for today?"
-            onChange={this.changeHandler}
-            value={this.state.newPost.post}
-            name="post"
-          />
-        </p>
-        <p>
-          <button
-            className="navlink"
-            onClick={() => {
-              this.postRequest(this.state.newPost);
-            }}
-          >
-            Submit your thoughts for the day
-          </button>
-        </p>
+        
       </div>
     );
   }

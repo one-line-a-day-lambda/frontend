@@ -43,7 +43,7 @@ export default class SignUp extends React.Component {
 
   render() {
     return (
-      <div className="divWrapper">
+      <div className="everything">
         {Menu()}
         <form
           onSubmit={event => {
