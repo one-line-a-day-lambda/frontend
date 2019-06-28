@@ -55,7 +55,7 @@ export default class OneLineADay extends React.Component {
           newPostSuccess: "POST request successful! Console log above ^",
           newPostError: ""
         });
-        window.location.reload();
+        this.forceUpdate();
         console.log(this.state.newPostSuccess);
       })
       .catch(rej => {
