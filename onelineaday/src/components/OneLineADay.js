@@ -114,7 +114,7 @@ export default class OneLineADay extends React.Component {
         <div className="entryBox">
           <h2>Dear Journal, Today . . .</h2>
           <input
-          className="diaryInput"
+            className="diaryInput"
             type="text"
             placeholder="What are your thoughts for today?"
             onChange={this.changeHandler}
