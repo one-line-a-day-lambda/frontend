@@ -40,10 +40,6 @@ export default class OneLineADay extends React.Component {
     });
   };
 
-  //not happy having to use window.location.reload for the axios requests, but from my readings,
-  //it seems the only other way to force a re-render is either this.forceUpdate() or componentDidUpdate,
-  //which we didn't learn
-
   postRequest = newPost => {
     console.log("newPost is below");
     console.log(newPost);
@@ -56,7 +52,6 @@ export default class OneLineADay extends React.Component {
           newPostSuccess: "POST request successful! Console log above ^",
           newPostError: ""
         });
-        // this.forceUpdate();
         console.log(this.state.newPostSuccess);
       })
       .catch(rej => {
