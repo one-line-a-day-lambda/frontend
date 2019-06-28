@@ -51,11 +51,12 @@ export default class OneLineADay extends React.Component {
       .post("/api/posts", newPost)
       .then(res => {
         console.log(res);
-        this.setState({
+        this.setState({ 
+          defaultPost: [...defaultPost, newPost],
           newPostSuccess: "POST request successful! Console log above ^",
           newPostError: ""
         });
-        this.forceUpdate();
+       // this.forceUpdate();
         console.log(this.state.newPostSuccess);
       })
       .catch(rej => {
