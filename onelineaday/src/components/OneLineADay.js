@@ -52,10 +52,11 @@ export default class OneLineADay extends React.Component {
       .then(res => {
         console.log(res);
         this.setState({
+          defaultPost: [...this.state.defaultPost, newPost],
           newPostSuccess: "POST request successful! Console log above ^",
           newPostError: ""
         });
-        window.location.reload();
+        // this.forceUpdate();
         console.log(this.state.newPostSuccess);
       })
       .catch(rej => {
@@ -73,9 +74,17 @@ export default class OneLineADay extends React.Component {
       .put(`/api/posts/${id}`, newPost)
       .then(res => {
         console.log(res);
-        window.location.reload();
+        this.getRequest();
+        // this.setState(prevState => ({
+        //   defaultPost: prevState.defaultPost.map(post => {
+        //     if (post.id === id) {
+        //       return newPost;
+        //     } else {
+        //       return post;
+        //     }
+        //   })
+        // }));
       })
-
       .catch(rej => {
         console.log(rej);
         this.setState({
@@ -103,8 +112,6 @@ export default class OneLineADay extends React.Component {
       });
   };
 
-
-
   render() {
     return (
       <div className="everything">
@@ -121,7 +128,7 @@ export default class OneLineADay extends React.Component {
             value={this.state.newPost.post}
             name="post"
           />
-        
+
           <button
             className="navlink submitDiary"
             onClick={() => {
@@ -145,7 +152,6 @@ export default class OneLineADay extends React.Component {
               />
               <p>
                 <button
-                
                   onClick={() => {
                     this.putRequest(post.id, this.state.newPost);
                   }}
@@ -164,7 +170,6 @@ export default class OneLineADay extends React.Component {
           ))}
         </div>
         {console.log(this.state.defaultPost)}
-        
       </div>
     );
   }
