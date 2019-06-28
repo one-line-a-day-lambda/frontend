@@ -48,10 +48,11 @@ export default class OneLineADay extends React.Component {
       .then(res => {
         console.log(res);
         this.setState({
-          defaultPost: [...this.state.defaultPost, newPost],
+          //defaultPost: [...this.state.defaultPost, newPost],
           newPostSuccess: "POST request successful! Console log above ^",
           newPostError: ""
         });
+        this.getRequest();
         console.log(this.state.newPostSuccess);
       })
       .catch(rej => {
